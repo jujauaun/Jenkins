@@ -2,7 +2,7 @@ pipeline {
     agent { label 'master' }
 
     stages {
-        stage ('Test') {
+        stage('Test') {
             steps {
                 dir("build_java") {
                     sh "mvn clean compile test"
@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stage ('Build Application') {
+        stage('Build Application') {
             steps {
                 dir("build_java") {
                     sh "mvn -f pom.xml clean install -Dmaven.test.skip=true"
@@ -20,7 +20,11 @@ pipeline {
             }
         }
 
-        stage ('Create Docker Image') {
+        stage('Create Docker Image') {
             steps {
                 echo "Creating Docker image"
-                // Aquí
+                // Aquí puedes agregar más pasos si es necesario
+            }
+        }
+    }
+}
